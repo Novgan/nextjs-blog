@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import Layout from '../components/Layout'
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import {postsType} from "../interfaces/reducerType";
+import {indexPropsType, mapStateToPropsType, postsType} from "../interfaces/reducerType";
 import {changePostId, deletePostAC, getPostsThunk, selectPost} from "../utils/redux/reducer";
 import {connect} from "react-redux";
 import Link from "next/link";
@@ -24,12 +24,8 @@ const Container = styled.div`
   border-radius: 3px/6px;        
 `
 
-type propsType = {
-    posts: Array<postsType>
-    changePostId (id: number | null):void
-}
 
-const IndexPage = (props: propsType) => {
+const IndexPage = (props: indexPropsType) : ReactElement => {
 
     let postRequest = (e: number | null) => {
         props.changePostId(e)
@@ -91,7 +87,7 @@ class IndexPageContainer extends React.Component<any> {
     }
 }
 
-let mapStateToProps = (state: any) => ({
+let mapStateToProps = (state: mapStateToPropsType) => ({
     posts: state.mainReducer.posts,
 })
 

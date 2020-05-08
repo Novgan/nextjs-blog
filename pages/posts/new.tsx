@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropsWithChildren} from 'react'
 import Layout from '../../components/Layout'
 import styled from "styled-components";
 import {Field, reduxForm} from 'redux-form';
@@ -23,14 +23,15 @@ const Container = styled.div`
   border-radius: 3px/6px;        
 `
 
-const AddPostContainer: React.FunctionComponent = (props) => {
+const AddPostContainer: React.FunctionComponent = (props:PropsWithChildren<any>) => {
     return <div>
         <New {...props}/>
     </div>
 }
 
-export const New = (props: any) => {
-    const onSubmit = (formData: any) => {
+export const New = (props: PropsWithChildren<any>) => {
+    const onSubmit = (formData: any): void => {
+        debugger
         props.addSinglePostRequest(formData.title, formData.body)
         Router.replace('/')
     }

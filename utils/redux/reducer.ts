@@ -45,30 +45,30 @@ const mainReducer = (state = initialState, action: any) => {
     }
 };
 
-export const addPostsAC = (id: number | null, title: string | null, body: string | null) => ({
+export const addPostsAC = (id: number | null, title: string | null, body: string | null) : object => ({
     type: GET_POST,
     id,
     title,
     body
 });
 
-export const selectPostAC = (title: string | null, body: string | null) => ({
+export const selectPostAC = (title: string | null, body: string | null) : object => ({
     type: SELECT_POST,
     title,
     body
 })
 
-export const changePostId = (id: number | null) => ({
+export const changePostId = (id: number | null) : object => ({
     type: CHANGE_POST_ID,
     id
 })
 
 
-export const deletePostAC = () => ({
+export const deletePostAC = () : object => ({
     type: DELETE_POSTS
 });
 
-export const addSinglePostAC = (title: string | null, body: string | null) => ({
+export const addSinglePostAC = (title: string | null, body: string | null) : object => ({
     type: ADD_POST,
     title,
     body

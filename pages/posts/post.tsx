@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {ReactElement, useEffect} from "react";
 import {connect} from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Layout from "../../components/Layout";
 import styled from "styled-components";
 import {selectPost} from "../../utils/redux/reducer";
+import {mapStateToPropsType, propsType} from "../../interfaces/reducerType";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -21,7 +22,8 @@ const Container = styled.div`
   border-radius: 3px/6px;        
 `
 
-const Post = (props: any): any => {
+
+const Post = (props: propsType): ReactElement => {
     useEffect(() => {
         props.selectPost(props.postId)
     }, []);
@@ -57,7 +59,7 @@ const Post = (props: any): any => {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: mapStateToPropsType): object => ({
     postId: state.mainReducer.postId,
     singlePost: state.mainReducer.singlePost
 })
